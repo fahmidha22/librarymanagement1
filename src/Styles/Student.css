@@ -1,0 +1,70 @@
+.admin-container{
+    display:flex;
+    height: 100vh;
+    text-align: center;
+}
+.sidebar{
+    width: 220px;
+    background:#1f2937 ;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100vh;
+}
+.sidebar-logo{
+    text-align:center;
+    margin-bottom:30px;
+}
+.sidebar-menu{
+    list-style: none;
+    padding: 0;
+}
+.sidebar-menu li{
+    padding: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+.sidebar-menu li:hover{
+    background: #374151;
+}
+.main-content{
+    flex:1;
+    padding: 40px;
+    background: #f4f4f4;
+    margin-left: 260px;
+}
+.booking-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background: white;
+}
+.booking-table th,
+.booking-table td{
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+.booking-table th{
+background: black;
+color: white;
+}
+.edit-btn{
+    background: #3b82f6;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    margin-right: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.delete-btn{
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}

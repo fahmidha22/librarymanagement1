@@ -1,0 +1,152 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: stretch;
+    z-index: 10;
+    background-color: white;
+    
+    
+}
+
+.navbar ul{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+   
+}
+.navbar ul a{
+    color: black;
+    text-decoration: none;
+}
+
+
+
+.register-btn{
+    background: orange;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    margin-right: 100px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.Base{
+    
+    height:500px;
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("https://images.unsplash.com/photo-1521587760476-6c12a4b040da") center/cover;
+    display:flex;
+    align-items:center;
+    color :white;
+}
+
+.base-content{
+    margin-left: 60px;
+    max-width: 500px;
+}
+.base-buttons button{
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+
+}
+.Browse{
+    background-color: orange;
+    
+}
+.Login{
+    background-color: orange;
+}
+.stats{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: scroll;
+}
+.stat-box{
+    text-align: center;
+    
+}
+.features{
+    text-align: center;
+    padding: 30px;
+
+}
+.features-grid{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+.features-card{
+    background: white;
+    padding: 20px;
+    width: 200px;
+    box-shadow:0px 2px 6px rgba(0,0,0,0.2);
+    border-radius:8px;
+}
+.Category{
+    text-align: center;
+    padding: 40px;
+}
+.category-box{
+    display: grid;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    grid-template-columns: repeat(3,1fr);
+    
+    
+}
+.cat{
+    border:none;
+    padding:12px 20px;
+    color:white;
+    border-radius:6px;
+    
+    
+    }
+
+.box1{background: blue;}
+.box2{background: green;}
+.box3{background: red;}
+.box4{background: yellow;}
+.box5{background:  purple;}
+.box6{background: Orange;}
+
+.books{
+    text-align: center;
+    padding: 40px;
+    
+}
+.book-grid{
+    justify-content: center;
+    display: flex;
+    gap: 15px;
+}
+.book-box{
+    box-shadow:0px 2px 5px rgba(0,0,0,0.2); 
+    width: 200px;
+    border-radius: 8px;
+    padding: 30px;
+}
+.book-box img{
+    width: 80px;
+}
+.footer{
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("https://images.unsplash.com/photo-1507842217343-583bb7270b66");
+    text-align: center;
+    padding: 80px;
+    color: white;
+    background-size: cover;
+
+}
