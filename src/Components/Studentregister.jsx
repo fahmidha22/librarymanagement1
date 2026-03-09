@@ -1,8 +1,11 @@
 import{ useState} from "react"
 import "../Styles/Studentregister.css"
 import { Link } from 'react-router-dom'
+import {auth, db} from "../Firebase"
+import {createUserWithEmailAndPassword} from "firebase/auth"
+import{ doc,setDoc} from "firebase/firestore"
 
-const Studentregister= async  () => {
+const Studentregister = () => {
   const[username,setUsername]=useState("")
   const[email,setEmail]=useState("")
   const[password,setPassword]=useState("")
@@ -10,17 +13,28 @@ const Studentregister= async  () => {
   const register = async(e) => {
     e.preventDefault()
     try{
-      const userCredential = await 
-
+      const userCredential = await createUserWithEmailAndPassword(auth,email,password)
+      const user=userCredential.user
+      await setDoc(doc(db,"Registration",user.uid),{
+        Username:username,
+        Email:email,
+        Department:department,
+        Role:"student"
+      })
+      alert("Registered successfully")
     }
-
-  }
+    catch(e)
+    {
+      alert(e.message)
+    }
+  } 
+  
   return (
     <div>
       <div class="login-page">
         <div class="login-box">
             <h2>Student Register</h2>
-            <form>
+            <form onSubmit={register}>
                 <div class="input-group">
                     <label>User Name</label>
                     <input type="text" onChange={(e)=>setUsername(e.target.value)}placeholder="Enter your name"/>
