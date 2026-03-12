@@ -7,7 +7,7 @@ import{ doc,setDoc} from "firebase/firestore"
 
 const Studentregister = () => {
   const[username,setUsername]=useState("")
-  const[email,setEmail]=useState("")
+  const[email,setEmail]=useState("") 
   const[password,setPassword]=useState("")
   const[department,setDepartment]=useState("")
   const register = async(e) => {
@@ -49,10 +49,10 @@ const Studentregister = () => {
                 </div>
                 <div class="input-group">
                     <label>Department</label>
-                    <input type="password"  onChange={(e)=>setDepartment(e.target.value)} placeholder="Enter your Department"/>
+                    <input type="text"  onChange={(e)=>setDepartment(e.target.value)} placeholder="Enter your Department"/>
                 </div>
                 <button class="register-btn">Register</button>
-                </form>
+                </form> 
         </div>
       </div>
     </div>

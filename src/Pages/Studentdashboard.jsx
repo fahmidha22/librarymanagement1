@@ -6,13 +6,12 @@ const Studentdashboard = () => {
       <div className='sidebar'>
         <h2 className='sidebar-logo'>📚 LMS</h2>
         <ul className='sidebar-menu'>
-           <li><a href="/AdminDashboard">📊Dashboard</a></li>
-            <li><a href="/Addbooks">📚Add Books</a></li>
-            <li><a href="/Viewbooks">📖View Books</a></li>
-            <li><a href ="/Students">👥Students</a></li>
-            <li><a href="/Issuebooks">📕Issue Books</a></li>
-            <li><a href="/Returnbooks">↩Return Book</a></li>
-            <li>🚪Logout</li>
+           <li><a href="/Studentdashboard">📊Dashboard</a></li>
+            <li><a href="/Browsebooks">📚Browse books</a></li>
+            <li><a href="/Myissuedbooks">📖My issued books</a></li>
+             <li><a href="/Returnbooks">↩Return Book</a></li>
+            <li><a href ="/Profile">👥Profile</a></li>
+          <li>🚪Logout</li>
         </ul>
       </div>
       <div className='main-content'>
@@ -44,4 +43,4 @@ const Studentdashboard = () => {
   )
 }
 
-export default Studentdashboard
+export default Studentdashboard 

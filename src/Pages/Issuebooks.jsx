@@ -8,13 +8,12 @@ const IssueBooks = () => {
             <div className="sidebar">
             <h2 className="sidebar-logo">📚 LMS</h2>
             <ul className="sidebar-menu">
-                <li><a href='/admindashboard'>📊Dashboard</a></li>
-                <li><a href='/addbook'>📚Add Books</a></li>
-                <li><a href='/viewbooks'>📖View Books</a></li>
-                <li><a href='/students'>👥Students</a></li>
-                <li><a href='/issuebook'>📕Issue Books</a></li>
-                <li><a href='/returnbooks'>↩Return Book</a></li>
-                <li>🚪Logout</li>
+                <li><a href="/Studentdashboard">📊Dashboard</a></li>
+            <li><a href="/Browsebooks">📚Browse books</a></li>
+            <li><a href="/Myissuedbooks">📖My issued books</a></li>
+             <li><a href="/Returnbooks">↩Return Book</a></li>
+            <li><a href ="/Profile">👥Profile</a></li>
+            <li>🚪Logout</li>
             </ul>
         </div>
         <div className="main-content">
