@@ -13,6 +13,8 @@ import Browsebooks from "./Pages/Browsebooks";
 import Myissuedbooks from "./Pages/Myissuedbooks";
 import Returnbooks from "./Pages/Returnbooks";
 import Profile from "./Pages/Profile";
+import EditBook from "./Pages/EditBook";
+
 
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
           <Route path="/Myissuedbooks" element={<Myissuedbooks/>}/>
           <Route path="/Returnbooks" element={<Returnbooks/>}/>
          <Route path="/Profile" element={<Profile/>}/>
+         <Route path="/EditBook/:id" element={<EditBook/>}/>
+
       </Routes>
     </BrowserRouter>
   );
