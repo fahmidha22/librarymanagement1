@@ -6,27 +6,41 @@ import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth, db } from "../Firebase"
 
 const Studentlogin = () => {  
-  const[email,setEmail]=useState("")
+    const[email,setEmail]=useState("")
     const[password,setPassword]=useState("") 
     const navigate = useNavigate()
     const login = async(e) =>{
       e.preventDefault()
+
       try{
+
         const userCredential = await signInWithEmailAndPassword(auth,email,password);
-        const user=userCredential.user;
-        const docRef = doc (db,'Registration',user.uid);
+        const user = userCredential.user;
+
+        const docRef = doc(db,'Registration',user.uid);
         const docSnap = await getDoc(docRef);
-        if(docSnap.exists()) {
-          navigate ("/Studentdashboard")
+
+        if(docSnap.exists()){
+
+          const studentData = docSnap.data()
+
+          localStorage.setItem("user", JSON.stringify({
+            email: studentData.Email,
+            name: studentData.Username,
+            uid: user.uid
+          }))
+
+          navigate("/Studentdashboard")
+
+        } else {
+          alert("Not Registered")
         }
-          else {
-            alert("not Registered")
-          }
+
       }
       catch(e){
         alert(e.message)
       }
-  }
+    }
   return (
     <div>
       <div class="login-page">

@@ -54,6 +54,12 @@ const Viewbooks = () => {
                   <td>{book.Author}</td>
                   <td>{book.Category}</td>
                   <td>{book.Quantity}</td>
+                  <td>{book.Quantity>0?(
+                  <span>Available</span>):(
+                    <span>Unavailable</span>
+                  )}
+                  </td>
+                
                 </tr>
                 ))}
 

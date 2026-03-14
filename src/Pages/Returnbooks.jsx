@@ -2,7 +2,11 @@ import { useNavigate } from "react-router-dom";
 import "../Styles/Returnbooks.css";
 import React from 'react'
 
-const Viewbooks = () => {
+const Returnbooks = () => {
+   const navigate = useNavigate()
+    const logout = () => (
+        navigate('/')
+    )
   return (
     <div className="admin-container">
       <div className="sidebar">
@@ -14,7 +18,7 @@ const Viewbooks = () => {
             <li><a href ="/Students">👥Students</a></li>
             <li><a href="/Issuebooks">📕Issue Books</a></li>
             <li><a href="/Returnbooks">↩Return Book</a></li>
-            <li>🚪Logout</li>
+            <li onClick={logout}>🚪Logout</li>
         </ul>
       </div>
       <div className="main-content">
@@ -35,4 +39,4 @@ const Viewbooks = () => {
   )
 };
 
-export default Viewbooks
+export default Returnbooks

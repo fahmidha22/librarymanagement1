@@ -1,8 +1,42 @@
 import { useNavigate } from "react-router-dom";
 import "../Styles/Myissuedbooks.css";
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../Firebase";
 
-const Viewbooks = () => {
+const Myissuedbooks = () => {
+  const[books,setBooks]=useState([])
+  const navigate= useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user)
+  useEffect(()=>{
+    fetchBooks()
+  },[])
+  const fetchBooks = async () => {
+
+    if(!user){
+      console.log("User not logged in")
+      return
+    }
+
+    const q = query(
+      collection(db,"BorrowedBooks"),
+      where("studentEmail","==",user.email),
+      where("status","==","Issued")
+    )
+
+    const snap = await getDocs(q)
+
+    setBooks(
+      snap.docs.map(d=>({
+        id:d.id,
+        ...d.data()
+      }))
+    )
+  }
+  const logout = ()=>{
+    logout('/')
+  }
   return (
     <div className="admin-container">
       <div className="sidebar">
@@ -18,20 +52,24 @@ const Viewbooks = () => {
       </div>
       <div className="main-content">
         <h1>My Issued Books</h1>
-        <table class="booking-table">
+        <table className="booking-table">
             <thead>
-                <th>ID</th>
+              <tr>
                 <th>Book Name</th>
-                <th>Author</th>
                 <th>Issue Date</th>
-                <th>Return Date</th>
-                 
+              </tr>
             </thead>
+            <tbody>
+              {books.map(b=>(
+                <tr key={b.id}>
+                  <td>{b.bookName}</td>
+                  <td>{b.borrowDate}</td>
+                </tr>
+              ))}
+            </tbody>
         </table>
-</div>
-
-</div>
+      </div>
+    </div>
   )
-};
-
-export default Viewbooks
+}
+export default Myissuedbooks

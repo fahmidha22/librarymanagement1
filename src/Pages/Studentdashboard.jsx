@@ -32,11 +32,6 @@ const Studentdashboard = () => {
                 <h3>Returned Books</h3>
                 <p>12</p>
             </div>
-            <div className='dash-card'>
-                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828884.png" alt="books"/>
-                <h3>Pending Fine</h3>
-                <p>₹0</p>
-            </div>
         </div>
       </div>
     </div>

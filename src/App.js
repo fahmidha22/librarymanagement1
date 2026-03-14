@@ -8,12 +8,12 @@ import Studentdashboard from "./Pages/Studentdashboard";
 import Addbooks from "./Pages/Addbooks";
 import Viewbooks from "./Pages/Viewbooks";
 import Students from "./Pages/Students";
-import IssueBooks from "./Pages/Issuebooks";
 import Browsebooks from "./Pages/Browsebooks";
 import Myissuedbooks from "./Pages/Myissuedbooks";
 import Returnbooks from "./Pages/Returnbooks";
 import Profile from "./Pages/Profile";
 import EditBook from "./Pages/EditBook";
+import AdminIssuebook from "./Pages/AdminIssuebook";
 
 
 
@@ -30,7 +30,7 @@ function App() {
          <Route path="/Addbooks" element={<Addbooks/>}/>
          <Route path="/Viewbooks" element={<Viewbooks/>}/>
          <Route path="/Students" element={<Students/>}/>
-         <Route path="/Issuebooks" element={<IssueBooks/>}/>
+         <Route path="/Issuebooks" element={<AdminIssuebook/>}/>
           <Route path="/Browsebooks" element={<Browsebooks/>}/>
           <Route path="/Myissuedbooks" element={<Myissuedbooks/>}/>
           <Route path="/Returnbooks" element={<Returnbooks/>}/>
