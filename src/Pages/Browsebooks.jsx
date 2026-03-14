@@ -29,7 +29,6 @@ const Viewbooks = () => {
             <li><a href="/Studentdashboard">📊Dashboard</a></li>
             <li><a href="/Browsebooks">📚Browse books</a></li>
             <li><a href="/Myissuedbooks">📖My issued books</a></li>
-             <li><a href="/Returnbooks">↩Return Book</a></li>
             <li><a href ="/Profile">👥Profile</a></li>
             <li onClick={logout}>🚪Logout</li>
         </ul>

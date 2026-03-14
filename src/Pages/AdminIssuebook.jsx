@@ -35,7 +35,7 @@ const AdminIssuebook = () => {
             return
         }
     try {
-await addDoc(collection(db, "BorrowedBook"), {
+    await addDoc(collection(db, "BorrowedBooks"), {
         studentName: students.Username,
         studentEmail: students.Email,
         bookId: books.id,
@@ -44,9 +44,9 @@ await addDoc(collection(db, "BorrowedBook"), {
         status: 'Issued',
         returnDate: ''
     })
-await updateDoc(doc(db, 'Book', books.id), {
-     Quantity: books.Quantity - 1
-     })
+    await updateDoc(doc(db, 'Book', books.id), {
+        Quantity: books.Quantity - 1
+        })
 
             alert("Book Issued Successfully")
 
@@ -72,14 +72,13 @@ await updateDoc(doc(db, 'Book', books.id), {
 
             <div className="sidebar">
                 <h2 className="sidebar-logo">📚 LMS</h2>
-
                 <ul className="sidebar-menu">
-                    <li><a href='/admindashboard'>📊Dashboard</a></li>
-                    <li><a href='/addbook'>📚Add Books</a></li>
-                    <li><a href='/viewbooks'>📖View Books</a></li>
-                    <li><a href='/students'>👥Students</a></li>
-                    <li><a href='/issuebook'>📕Issue Books</a></li>
-                    <li><a href='/returnbook'>↩Return Book</a></li>
+                    <li><a href="/AdminDashboard">📊Dashboard</a></li>
+                    <li><a href="/Addbooks">📚Add Books</a></li>
+                    <li><a href="/Viewbooks">📖View Books</a></li>
+                    <li><a href ="/Students">👥Students</a></li>
+                    <li><a href="/Issuebooks">📕Issue Books</a></li>
+                    <li><a href="/Returnbooks">↩Return Book</a></li>
                     <li onClick={logout}>🚪Logout</li>
                 </ul>
             </div>

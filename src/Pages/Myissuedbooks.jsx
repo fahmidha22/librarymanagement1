@@ -1,10 +1,55 @@
+// import { useNavigate } from "react-router-dom";
+// import "../Styles/Myissuedbooks.css";
+// import React, { useEffect, useState } from 'react'
+// import { collection, getDocs, query, where } from "firebase/firestore";
+// import { db } from "../Firebase";
+
+// const Myissuedbooks = () => {
+//   const[books,setBooks]=useState([])
+//   const navigate= useNavigate();
+//   const user = JSON.parse(localStorage.getItem("user"));
+//   console.log(user)
+//   useEffect(()=>{
+//     fetchBooks()
+//   },[])
+//   const fetchBooks = async () => {
+
+//     if(!user){
+//       console.log("User not logged in")
+//       return
+//     }
+
+//     const q = query(
+//       collection(db,"BorrowedBooks"),
+//       where("studentEmail","==",user.email),
+//       where("status","==","Issued")
+//     )
+
+//     const snap = await getDocs(q)
+
+//     setBooks(
+//       snap.docs.map(d=>({
+//         id:d.id,
+//         ...d.data()
+//       }))
+//     )
+//   }
+//   const logout = ()=>{
+//     logout('/')
+//   }
+//   return (
+   
+//   )
+// }
+// export default Myissuedbooks
+
 import { useNavigate } from "react-router-dom";
-import "../Styles/Myissuedbooks.css";
-import React, { useEffect, useState } from 'react'
+import '../Styles/Myissuedbooks.css'
+import { useEffect, useState } from "react";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../Firebase";
+const MyissuedBooks = () => {
 
-const Myissuedbooks = () => {
   const[books,setBooks]=useState([])
   const navigate= useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -14,18 +59,9 @@ const Myissuedbooks = () => {
   },[])
   const fetchBooks = async () => {
 
-    if(!user){
-      console.log("User not logged in")
-      return
-    }
+    const snap = await getDocs(collection(db,"BorrowedBooks"));
 
-    const q = query(
-      collection(db,"BorrowedBooks"),
-      where("studentEmail","==",user.email),
-      where("status","==","Issued")
-    )
-
-    const snap = await getDocs(q)
+    console.log("All Docs:", snap.docs)
 
     setBooks(
       snap.docs.map(d=>({
@@ -34,18 +70,17 @@ const Myissuedbooks = () => {
       }))
     )
   }
-  const logout = ()=>{
-    logout('/')
-  }
+    const logout = () => (
+      navigate('/')
+    )
   return (
-    <div className="admin-container">
+     <div className="admin-container">
       <div className="sidebar">
         <h2 className="sidebar-logo">📚 LMS</h2>
         <ul className="sidebar-menu">
             <li><a href="/Studentdashboard">📊Dashboard</a></li>
             <li><a href="/Browsebooks">📚Browse books</a></li>
             <li><a href="/Myissuedbooks">📖My issued books</a></li>
-             <li><a href="/Returnbooks">↩Return Book</a></li>
             <li><a href ="/Profile">👥Profile</a></li>
             <li>🚪Logout</li>
         </ul>
@@ -60,16 +95,23 @@ const Myissuedbooks = () => {
               </tr>
             </thead>
             <tbody>
-              {books.map(b=>(
-                <tr key={b.id}>
-                  <td>{b.bookName}</td>
-                  <td>{b.borrowDate}</td>
+              {books.length === 0 ? (
+                <tr>
+                  <td colSpan="2">No issued books</td>
                 </tr>
-              ))}
+              ) : (
+                books.map(b=>(
+                  <tr key={b.id}>
+                    <td>{b.bookName}</td>
+                    <td>{b.borrowDate}</td>
+                  </tr>
+                ))
+              )}
             </tbody>
         </table>
       </div>
     </div>
-  )
-}
-export default Myissuedbooks
+  );
+};
+
+export default MyissuedBooks;

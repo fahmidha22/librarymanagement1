@@ -36,7 +36,7 @@ const Viewbooks = () => {
   return (
     <div className="admin-container">
       <div className="sidebar">
-        <h2 className="si debar-logo">📚 LMS</h2>
+        <h2 className="sidebar-logo">📚 LMS</h2>
         <ul className="sidebar-menu">
             <li><a href="/AdminDashboard">📊Dashboard</a></li>
             <li><a href="/Addbooks">📚Add Books</a></li>
