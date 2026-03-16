@@ -10,17 +10,21 @@ const Viewbooks = () => {
       navigate('/')
     }
      const[books,setBooks]=useState([])
+     const[search,setSearch]=useState("")
+      useEffect(()=>{
+        fetchBooks();
+      },[]); 
       const fetchBooks = async () =>{
-        const querySnapshot = await getDocs(collection(db,"Book"));
-        const data = querySnapshot.docs.map(doc => ({
-          id:doc.id,
-          ...doc.data() 
+      const querySnapshot = await getDocs(collection(db,"Book"));
+      const data = querySnapshot.docs.map(doc => ({
+        id:doc.id,
+        ...doc.data() 
         }));
         setBooks(data);
       };
-      useEffect(()=>{
-        fetchBooks();
-      },[]);             
+      const filteredBooks=books.filter(book=>
+        book.Name. toLowerCase().includes(search.toLowerCase())
+      )            
   return (
     <div className="admin-container">
       <div className="sidebar">
@@ -35,6 +39,7 @@ const Viewbooks = () => {
       </div>
       <div className="main-content">
         <h1>Browse books</h1>
+        <input type="text" value={search} placeholder="search books" onChange={(e)=>setSearch(e.target.value)}></input>
         <table class="booking-table">
             <thead>
                 <th>ID</th>
@@ -46,7 +51,7 @@ const Viewbooks = () => {
                 
             </thead>
             <tbody>
-              {books.map((book,index)=>(
+              {filteredBooks.map((book,index)=>(
                 <tr key={book.id}> 
                   <td>{ index + 1}</td>
                   <td>{book.Name}</td>
