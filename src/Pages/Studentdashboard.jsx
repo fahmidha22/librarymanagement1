@@ -1,7 +1,7 @@
 import '../Styles/Studentdashboard.css'
 import { useNavigate } from 'react-router-dom'
 import { auth, db } from '../Firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
 
@@ -9,6 +9,7 @@ const  Studentdashboard  = () => {
 
   const [issued,setIssued] = useState(0)
   const [returned,setReturned] = useState(0)
+  const [availableBooks, setAvailableBooks]=useState(0)
 
   const navigate = useNavigate()
 
@@ -25,7 +26,6 @@ const  Studentdashboard  = () => {
     return ()=> unsubscribe()
 
   },[])
-
   const fetchData = async (email) => {
 
     const snap = await getDocs(collection(db,"BorrowedBooks"))
@@ -38,6 +38,11 @@ const  Studentdashboard  = () => {
 
     setReturned(myBooks.filter(b => b.status === "Returned").length)
 
+    const bookSnap = await getDocs(collection(db,'Book'))
+
+    const totalBook = bookSnap.docs.map(doc => doc.data())
+
+    setAvailableBooks(totalBook.length)   // ✅ set count
   }
 
   const logout = () => {
@@ -68,7 +73,7 @@ const  Studentdashboard  = () => {
             <div className='dash-card'>
                 <img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="books"/>
                 <h3>Available Books</h3>
-                <p>5000+</p>
+                <p>{availableBooks}</p>
             </div>
 
             <div className='dash-card'>
